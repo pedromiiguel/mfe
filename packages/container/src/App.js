@@ -1,5 +1,11 @@
 import React, { lazy, Suspense, useState } from 'react';
-import { BrowserRouter, Route, Routes, Navigate, useNavigate } from 'react-router-dom';
+import {
+  BrowserRouter,
+  Route,
+  Routes,
+  Navigate,
+  useNavigate,
+} from 'react-router-dom';
 import { StyledEngineProvider } from '@mui/material/styles';
 
 import Progress from './components/Progress';
@@ -19,25 +25,27 @@ const App = () => {
   };
 
   return (
-      <StyledEngineProvider injectFirst>
-        <div>
-          <Header
-            onSignOut={() => setIsSignedIn(false)}
-            isSignedIn={isSignedIn}
-          />
-          <Suspense fallback={<Progress />}>
-            <Routes>
-              <Route path="/auth/*" element={
-                <AuthLazy onSignIn={handleSignIn} />
-              } />
-              <Route path="/dashboard" element={
-                !isSignedIn ? <Navigate to="/" /> : <DashboardLazy />
-              } />
-              <Route path="/*" element={<MarketingLazy />} />
-            </Routes>
-          </Suspense>
-        </div>
-      </StyledEngineProvider>
+    <StyledEngineProvider injectFirst>
+      <div>
+        <Header
+          onSignOut={() => setIsSignedIn(false)}
+          isSignedIn={isSignedIn}
+        />
+        <Suspense fallback={<Progress />}>
+          <Routes>
+            <Route
+              path="/auth/*"
+              element={<AuthLazy onSignIn={handleSignIn} />}
+            />
+            <Route
+              path="/dashboard"
+              element={!isSignedIn ? <Navigate to="/" /> : <DashboardLazy />}
+            />
+            <Route path="/*" element={<MarketingLazy />} />
+          </Routes>
+        </Suspense>
+      </div>
+    </StyledEngineProvider>
   );
 };
 

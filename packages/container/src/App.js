@@ -23,6 +23,7 @@ const App = () => {
     setIsSignedIn(true);
     navigate('/dashboard');
   };
+  
 
   return (
     <StyledEngineProvider injectFirst>

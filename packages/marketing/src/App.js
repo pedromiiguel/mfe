@@ -17,6 +17,7 @@ export default ({ history }) => {
     return unlisten; // Clean up the listener on unmount
   }, [history]);
 
+  
   return (
     <div>
       <StyledEngineProvider injectFirst>

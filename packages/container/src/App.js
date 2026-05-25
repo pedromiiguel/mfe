@@ -24,7 +24,6 @@ const App = () => {
     navigate('/dashboard');
   };
   
-
   return (
     <StyledEngineProvider injectFirst>
       <div>
